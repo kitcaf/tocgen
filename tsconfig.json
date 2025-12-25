@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "target": "ESNext", /* 编译成最新的 JS 语法 */
+        "module": "NodeNext", /* 使用 Node 原生模块规范 */
+        "moduleResolution": "NodeNext",
+        "outDir": "./dist", /* 输出目录 */
+        "rootDir": "./src", /* 源码目录 */
+        "strict": true, /* 开启严格类型检查 */
+        "esModuleInterop": true,
+        "skipLibCheck": true
+    },
+    "include": [
+        "src/**/*"
+    ]
+}

@@ -1,0 +1,1 @@
+console.log("环境配置成功！Hello TypeScript!");
