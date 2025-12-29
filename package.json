@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "tsx src/index.ts",
+    "dev": "tsx src/commands/toc.ts",
     "build": "tsup src/index.ts --format esm --out-dir dist --clean",
     "test": "vitest",
     "dev_test": "npx tsc --noEmit false --outDir ./dist --target ES5",
-    "lint": "eslint"
+    "lint": "eslint"  
   },
   "bin": {
     "toc": "./src/commands/toc.js"
