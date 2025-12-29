@@ -4,7 +4,7 @@
  * 本质上是构建Trie树，只不过这里节点：按照路径片段切分的文件名
 */
 
-import { DocNode } from "@/type/docNode.js";
+import { DocNode } from "./type/docNode.js";
 
 /**
  * 将扁平路径列表转换为Tire树形结构

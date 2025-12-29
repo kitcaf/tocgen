@@ -12,9 +12,9 @@ import { updateReadme } from './injector.js';
  */
 export async function runCli(options: TocOptions) {
     const { rootDir } = options;
-
+    console.log("根目录", rootDir)
     const paths = await scanDocs({ cwd: rootDir });
-
+    
     if (!paths.length) {
         throw new Error('No Markdown files found in the target directory.');
     }

@@ -1,6 +1,6 @@
 import fs from 'fs/promises';
 import matter from 'gray-matter';
-import { DocNode } from '@/type/docNode.js';
+import { DocNode } from './type/docNode.js';
 
 /**
  * H1 提取器 (State Machine Pattern)
