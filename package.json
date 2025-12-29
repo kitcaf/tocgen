@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "tsx src/index.ts",
     "build": "tsup src/index.ts --format esm --out-dir dist --clean",
-    "test": "vitest"
+    "test": "vitest",
+    "dev_test": "npx tsc --noEmit false --outDir ./dist --target ES5"
   },
   "type": "module",
   "keywords": [],
