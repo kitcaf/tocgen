@@ -9,3 +9,9 @@ export const DEFAULT_IGNORE = [
     '**/images/**',
     '**/assets/**'
 ];
+
+/**
+ * 定义锚点常量
+ */
+export const START_TAG = '';
+export const END_TAG = '';

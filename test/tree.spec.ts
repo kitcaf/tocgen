@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { buildTreeFromPaths } from '@/tree.js';
+import { buildTreeFromPaths } from '../src/tree.js';
 
 describe('Tree Builder', () => {
     it('enable Flat file', () => {
@@ -39,8 +39,8 @@ describe('Tree Builder', () => {
 
         // 验证 guide/advanced/config.md 路径是否正确
         const guide = output.find(n => n.name === 'guide');
-        const advanced = guide?.children?.find(n => n.name === 'advanced');
-        const config = advanced?.children?.find(n => n.name === 'config.md');
+        const advanced = guide?.children?.find((n: { name: string; }) => n.name === 'advanced');
+        const config = advanced?.children?.find((n: { name: string; }) => n.name === 'config.md');
 
         expect(config).toBeDefined();
         expect(config?.path).toBe('guide/advanced/config.md');

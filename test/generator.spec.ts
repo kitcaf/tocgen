@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { DocNode } from '@/type/docNode.js';
-import { renderToMarkdown, sortTree } from '@/generator.js';
+import { DocNode } from '../src/type/docNode.js';
+import { renderToMarkdown, sortTree } from '../src/generator.js';
 
 describe('Generator (排序与渲染)', () => {
     // 准备一组乱序的测试数据

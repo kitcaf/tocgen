@@ -1,6 +1,6 @@
 // test/scanner.test.ts
 import { describe, it, expect } from 'vitest';
-import { scanDocs } from '@/scanner.js';
+import { scanDocs } from '../src/scanner.js';
 import path from 'node:path';
 
 describe('Scanner', () => {

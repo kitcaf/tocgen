@@ -1,8 +1,8 @@
 import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import fs from 'fs/promises';
 import path from 'node:path';
-import { DocNode } from '@/type/docNode.js';
-import { enrichTree } from '@/parser.js';
+import { DocNode } from '../src/type/docNode.js';
+import { enrichTree } from '../src/parser.js';
 
 
 const TEMP_DIR = 'test_temp_docs_parser';
