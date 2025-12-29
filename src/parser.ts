@@ -61,26 +61,12 @@ async function parseFileMeta(filePath: string) {
 
         return {
             title: frontmatter.title || h1Title, // 优先 Meta，其次 H1
-            order: frontmatter.order, // 排序权重 --- 可以通过order配置文件权重
+            order: frontmatter.order, // 排序权重
         };
     } catch (e) {
         console.warn(`解析失败 [${filePath}]:`, e);
         return { title: null, order: null };
     }
-}
-
-/**
- * 工具函数：清洗名称 如果有标题就用标题，没有就处理文件名
- * 优先级 1 (最高)：Front Matter 中的 title (meta.title 里的值)。
- * 优先级 2：文件正文里的第一个 # H1 标题 (如果没写 Front Matter)。
- * 优先级 3 (最低)：文件名 (去掉后缀，去掉序号)。
- */
-function cleanupName(filename: string, title?: string | null): string {
-    if (title) return title;
-
-    return filename
-        .replace(/\.md$/, '')      // 移除扩展名
-        .replace(/^\d+[-_]/, '');  // 移除 01_ 前缀
 }
 
 /**
@@ -120,4 +106,18 @@ export async function enrichTree(nodes: DocNode[]): Promise<DocNode[]> {
     });
 
     return Promise.all(tasks);
+}
+
+/**
+ * 工具函数：清洗名称 如果有标题就用标题，没有就处理文件名
+ * 优先级 1 (最高)：Front Matter 中的 title (meta.title 里的值)。
+ * 优先级 2：文件正文里的第一个 # H1 标题 (如果没写 Front Matter)。
+ * 优先级 3 (最低)：文件名 (去掉后缀，去掉序号)。
+ */
+function cleanupName(filename: string, title?: string | null): string {
+    if (title) return title;
+
+    return filename
+        .replace(/\.md$/, '')      // 移除扩展名
+        .replace(/^\d+[-_]/, '');  // 移除 01_ 前缀
 }
