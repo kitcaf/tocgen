@@ -8,6 +8,7 @@ import { updateReadme } from './injector.js';
 
 export async function runCli(options: TocOptions) {
     const { rootDir } = options;
+    //rootDir 表示解析文档目录的工作区
     const paths = await scanDocs({ cwd: rootDir });
     if (!paths.length) {
         throw new Error('No Markdown files found in the target directory.');
@@ -20,7 +21,8 @@ export async function runCli(options: TocOptions) {
 
     const markdown = renderToMarkdown(tree);
 
-    const readmePath = path.join(rootDir, 'README.md');
+    // 这里的是项目根目录
+    const readmePath = path.join('.', 'README.md');
     await updateReadme(readmePath, markdown);
 
     return { success: true, readmePath };
