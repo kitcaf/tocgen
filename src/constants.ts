@@ -44,3 +44,16 @@ export const CHINESE_UNITS: Record<string, number> = {
     '千': 1000, '仟': 1000,
     '万': 10000,
 };
+
+/**
+ * 罗马数字值映射表
+ */
+export const ROMAN_VALUES: Record<string, number> = {
+    'I': 1,
+    'V': 5,
+    'X': 10,
+    'L': 50,
+    'C': 100,
+    'D': 500,
+    'M': 1000
+};
