@@ -1,14 +1,21 @@
 {
-  "name": "auto-toc-cli",
+  "name": "@kitcaf/tocgen",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "dev": "tsx src/commands/toc.ts --watch",
     "build": "tsup",
     "test": "vitest",
     "lint": "eslint"
   },
+  "files": [
+    "bin",
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "bin": {
     "toc": "bin/toc.mjs"
   },
