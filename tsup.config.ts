@@ -16,6 +16,8 @@ export default defineConfig({
     dts: true,
 
     outDir: 'dist',
+    
+    minify: true,
 
     splitting: true, //打开拆包 
     sourcemap: false,
