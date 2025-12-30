@@ -1,14 +1,21 @@
 {
-  "name": "auto-toc-cli",
+  "name": "@kitcaf/tocgen",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "dev": "tsx src/commands/toc.ts --watch",
     "build": "tsup",
     "test": "vitest",
     "lint": "eslint"
   },
+  "files": [
+    "bin",
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "bin": {
     "toc": "bin/toc.mjs"
   },
@@ -21,6 +28,7 @@
     "@eslint/js": "^9.39.2",
     "@types/node": "^25.0.3",
     "eslint": "^9.39.2",
+    "fast-check": "^4.5.2",
     "globals": "^16.5.0",
     "jiti": "^2.6.1",
     "rimraf": "^6.1.2",
