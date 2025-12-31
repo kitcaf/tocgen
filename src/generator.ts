@@ -1,4 +1,4 @@
-import { DocNode } from './type/docNode.js';
+import { DocNode } from './type/index.js';
 import { naturalSorter, extractSortKey, compareSortKeys } from './utils.js';
 
 /**
@@ -23,7 +23,7 @@ export function sortTree(nodes: DocNode[]): DocNode[] {
         // 规则 B: 比较从文件名提取的 Sort_Key
         const sortKeyA = extractSortKey(a.name);
         const sortKeyB = extractSortKey(b.name);
-        
+
         // 只有当至少一个有 Sort_Key 时才比较
         if (sortKeyA !== null || sortKeyB !== null) {
             const sortKeyComparison = compareSortKeys(sortKeyA, sortKeyB);

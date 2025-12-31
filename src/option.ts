@@ -1,5 +1,5 @@
 import { createJiti } from "jiti";
-import { TocConfig, UserConfig } from "./type/config.js";
+import { TocConfig, UserConfig } from "./type/index.js";
 import path from "node:path";
 import fs from 'node:fs';
 
@@ -14,8 +14,6 @@ const DEFAULT_CONFIG: UserConfig = {
 };
 
 const CONFIG_FILE_NAME = "toc.config"
-
-
 
 /**
  * Resolves the configuration by searching for config files in the current working directory.
