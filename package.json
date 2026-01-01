@@ -7,7 +7,7 @@
     "build": "tsup",
     "test": "vitest",
     "lint": "eslint",
-    "publish": "pnpm build && npm publish"
+    "pub": "pnpm build && npm publish"
   },
   "publishConfig": {
     "access": "public"
