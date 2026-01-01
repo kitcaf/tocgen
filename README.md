@@ -15,7 +15,6 @@
 2. **排序反直觉**：GitHub 默认按 ASCII 码排序，导致 `10.md` 排在 `2.md` 前面；或者 `第一章` 和 `第二章` 顺序错乱。
 3. **缺乏全局视图**：GitHub 只能看单文件，缺乏一个全局的、层级分明的“书本目录”视图。
 
-**@kitcaf/tocgen 就是为了解决这些场景而生的 MVP (Minimum Viable Product) 工具。**
 
 ## 核心特性 (Features)
 
@@ -25,7 +24,9 @@
 * ✅ 阿拉伯数字：`1.`, `2.`, `10.`
 * ✅ 中文数字：`第一章`, `十二`, `第三节`
 * ✅ 罗马数字：`I`, `IV`, `X`
-* **无损注入**：使用 `` 标记，只更新目录区域，不破坏你精心写的项目介绍。
+
+
+* **无损注入**：使用 `<!--toc-->` 标记，只更新目录区域，不破坏你精心写的项目介绍。
 * **零配置起步**：默认配置即可满足 90% 的需求，也支持 `toc.config.ts` 深度定制。
 
 ## 安装 (Installation)
@@ -41,12 +42,14 @@ pnpm add -g @kitcaf/tocgen
 
 ## 快速开始 (Usage)
 
+> 💡 **提示**：工具默认会扫描项目根目录下的 **`docs`** 文件夹。
+> 如果你的文档在其他位置（例如项目根目录 `.`），请参考下方的 [配置 (Configuration)](https://www.google.com/search?q=%23%E9%85%8D%E7%BD%AE-configuration) 章节。
+
 ### 1. 标记
 
-在你的 GitHub 仓库根目录的 `README.md` 中加入标记`<!--toc-->`：
+在需要构建目录的 `README.md` 中加入标记`<!--toc-->`：
 
 ```markdown
-
 # 我的知识库
 
 欢迎来到我的学习笔记...
@@ -68,19 +71,19 @@ toc
 
 ## 配置 (Configuration)
 
-支持在项目根目录创建 `toc.config.ts` 进行精细控制：
 
 ```typescript
 import { defineConfig } from '@kitcaf/tocgen';
 
 export default defineConfig({
-  // 你的文档都在哪个目录下？默认为当前目录
+  // 扫描文档的根目录 (默认为 'docs')
+  // 如果你想扫描当前根目录下的所有文件，可以设为 '.'
   baseDir: 'docs',
   
-  // 排除不想展示的目录
-  exclude: ['node_modules', 'public', 'assets'],
+  // 排除不想展示的文件或目录 (支持 glob 模式)
+  exclude: ['node_modules', 'public', 'assets', 'dist'],
   
-  // 输出文件
+  // 目录注入的目标文件 (默认为 'README.md')
   outDir: 'README.md'
 });
 
@@ -88,17 +91,14 @@ export default defineConfig({
 
 ## 未来计划 (Roadmap)
 
-未来的开发计划包括：
+未来计划包括：
 
 * [ ] **自定义模板 (Custom Templates)**
-* 目前生成的是标准的 Markdown 列表。未来将支持自定义渲染模板，例如生成表格形式、带有摘要的卡片形式，或者是侧边栏导航格式。
-
-
 * [ ] **多文档库支持 (Multi-Repo / Monorepo Support)**
-* 针对大型项目，支持一次性扫描多个独立的文档根目录，并分别注入到不同的位置或文件中（类似 Monorepo 的文档管理）。
-
+* [ ] **自定义映射配置 (Mapping & Override)**
 * [ ] **自动监听 (Watch Mode)**
+* [ ] **GitHub Actions 集成 (CI/CD)**
 
 ## License
 
-ISC © Kitcaf[https://github.com/kitcaf]
+ISC © [Kitcaf](https://github.com/kitcaf)
