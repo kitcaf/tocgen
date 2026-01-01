@@ -1,5 +1,3 @@
-# @kitcaf/tocgen
-
 > **专门为 GitHub 知识库和文档库打造的自动化目录生成工具。**
 > *Automated Table of Contents Generator for GitHub Documentation Libraries.*
 
