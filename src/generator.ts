@@ -66,7 +66,7 @@ export function renderToMarkdown(nodes: DocNode[], depth = 0): string {
         // 1. 处理文件节点（文件节点是需要带链接的）
         if (node.type === 'file') { //URL 编码，防止中文路径 404
             // replace(/ /g, '%20') 是为了处理空格，encodeURI 处理中文
-            const safePath = encodeURI(node.path);
+            const safePath = encodeURI(node.linkPath!);
             output += `${indent}- [${node.displayName}](${safePath})\n`;
         }
         // 2. 处理文件夹节点
