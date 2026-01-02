@@ -11,14 +11,6 @@ export const DEFAULT_IGNORE = [
 ];
 
 /**
- * 定义目录标记常量
- * TAG_MARK: 用户手动在md文件中输入的开始标记
- * TAG_CLOSE: 系统自动生成的结束标记（用户无需手动输入）
- */
-export const TAG_MARK = '<!--toc-->';
-export const TAG_CLOSE = '<!--tocEnd-->';
-
-/**
  * 中文数字映射表
  * 支持简体、繁体及大写数字
  */
