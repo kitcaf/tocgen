@@ -10,6 +10,9 @@ export const DEFAULT_IGNORE = [
     '**/assets/**'
 ];
 
+export const TAG_MARK = '<!--toc-->';
+export const TAG_CLOSE = '<!--tocEnd-->';
+
 /**
  * 中文数字映射表
  * 支持简体、繁体及大写数字

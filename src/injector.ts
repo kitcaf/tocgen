@@ -2,6 +2,8 @@
 import fs from 'fs/promises';
 import { TAG_MARK, TAG_CLOSE } from "./constants.js"
 
+
+
 /**
  * 在原md文中注入或更新目录
  * 用户只需在md文件中输入一次 <!--toc--> 即可
