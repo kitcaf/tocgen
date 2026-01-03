@@ -7,9 +7,11 @@ import { TocMarkInfo, TocEndInfo } from './types.js';
 
 // Regex constants
 // Matches <!--toc-->, <!-- toc -->, <!--TOC-->, <!-- TOC --> etc.
-const TOC_MARK_REGEX = /<!--\s*toc\s*-->/i;
+// Must be on its own line (only whitespace before/after)
+const TOC_MARK_REGEX = /^\s*<!--\s*toc\s*-->\s*$/i;
 // Matches <!--tocEnd--> or <!--tocEnd:offset=N-->
-const TOC_END_REGEX = /<!--\s*tocEnd(?::offset=(\d+))?\s*-->/i;
+// Must be on its own line (only whitespace before/after)
+const TOC_END_REGEX = /^\s*<!--\s*tocEnd(?::offset=(\d+))?\s*-->\s*$/i;
 // Matches code block start/end (``` or ~~~)
 const CODE_BLOCK_REGEX = /^(\s*)(`{3,}|~{3,})/;
 
