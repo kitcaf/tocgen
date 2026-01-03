@@ -16,7 +16,6 @@ function createAnalysis(
         tocEnds,
         activeMark,
         staleRegions,
-        moveDetected: staleRegions.length > 0
     };
 }
 
@@ -120,10 +119,14 @@ describe('Injector Transformer', () => {
 
             const result = transformDocument(analysis, '- new item');
 
+            // Stale content should be removed
             expect(result).not.toContain('- stale item');
-            expect(result).not.toContain('<!--tocEnd:offset=1-->');
+            // New TOC should be injected
             expect(result).toContain('- new item');
             expect(result).toContain('footer');
+            // Should have exactly one tocEnd (the new one)
+            const tocEndCount = result.filter(l => l.includes('tocEnd')).length;
+            expect(tocEndCount).toBe(1);
         });
 
         it('should generate correct offset in end tag', () => {
