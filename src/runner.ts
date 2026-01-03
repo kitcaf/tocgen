@@ -2,11 +2,20 @@ import { scanDocs } from './scanner.js';
 import { buildTreeFromPaths } from './tree.js';
 import { enrichTree } from './parser.js';
 import { sortTree, renderToMarkdown } from './generator.js';
-import { updateReadme } from './injector.js';
+import { updateReadme, InjectorOptions, InjectionResult } from './injector/index.js';
 import { TocConfig } from './type/index.js';
 import { calculatePathPrefix } from './utils.js';
 
-export async function runCli(options: TocConfig) {
+export interface RunCliResult {
+    success: boolean;
+    readmePath: string;
+    injectionResult: InjectionResult;
+}
+
+export async function runCli(
+    options: TocConfig,
+    injectorOptions: InjectorOptions = {}
+): Promise<RunCliResult> {
     const { scanPath, readmePath } = options;
 
     const paths = await scanDocs({ cwd: scanPath });
@@ -23,7 +32,11 @@ export async function runCli(options: TocConfig) {
 
     const markdown = renderToMarkdown(tree);
 
-    await updateReadme(readmePath, markdown);
+    const injectionResult = await updateReadme(readmePath, markdown, injectorOptions);
 
-    return { success: true, readmePath };
+    return {
+        success: injectionResult.success,
+        readmePath,
+        injectionResult
+    };
 }
