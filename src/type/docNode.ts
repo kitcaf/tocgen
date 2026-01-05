@@ -39,7 +39,6 @@ export interface DocNode {
         order?: number;     // comefrom Frontmatter
         ignore?: boolean;   // comefrom Frontmatter
 
-
         // ---comefrom userConfig Mapping---
         mappingName?: string;
         mappingOrder?: number;
