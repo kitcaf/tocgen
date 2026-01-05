@@ -27,11 +27,6 @@ export interface DocNode {
     children?: DocNode[];
 
     /**
-     * 实际展示（UI渲染/生成目录）展示的名字
-     */
-    displayName?: string
-
-    /**
      * 元数据
      */
     meta?: {
