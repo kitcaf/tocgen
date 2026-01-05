@@ -1,3 +1,5 @@
+import { MappingRules } from "src/mapping/types.js";
+
 /**
  * Nested mapping configuration
  * Uses '$' prefix for metadata to avoid conflicts with filenames
@@ -90,5 +92,5 @@ export interface TocConfig {
     * Use '$ignore' inside mapping for specific, path-based hiding logic
     * after the files have been scanned.
     */
-    mapping?: MappingConfig;
+    mapping?: MappingRules;
 }

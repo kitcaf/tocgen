@@ -28,6 +28,7 @@ export async function runCli(
     let tree = buildTreeFromPaths(paths, pathPrefix);
 
     tree = await enrichTree(tree, scanPath);
+
     tree = sortTree(tree);
 
     const markdown = renderToMarkdown(tree);
