@@ -105,7 +105,7 @@ mapping 字段用于修改生成的目录结构，支持以下**三类规则**�
 
 使用 **/ 前缀，匹配仓库内所有文件名或目录名与 Key 同名的节点，忽略其层级深度
 
-```
+```typescript
 export default defineConfig({
   mapping: {
     // 对象模式配置多个属性
@@ -124,7 +124,8 @@ export default defineConfig({
 匹配 baseDir 根目录下的特定文件夹，并支持递归配置其内部结构
 
 注意：（1）不要写 /:Key 必须是单层文件夹名 （2）不要写扫描根目录：如果你的 baseDir 是 docs，配置时直接写 docs 下的一级目录名即可（例如写 guide 而不是 docs/guide）
-```
+
+```typescript
 export default defineConfig({
   baseDir: 'docs', // 假设扫描 docs 目录
   
@@ -155,7 +156,8 @@ export default defineConfig({
 精准定位并配置指定路径下的特定文件或目录
 
 注意：（1）路径是相对于 baseDir 的相对路径
-```
+
+```typescript
 export default defineConfig({
   baseDir: 'docs',
   
