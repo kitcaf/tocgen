@@ -69,28 +69,113 @@ toc
 
 ## 配置 (Configuration)
 
+工具支持通过 toc.config.ts 进行定制化配置
+
+### 基础配置
+
 ```typescript
 import { defineConfig } from '@kitcaf/tocgen';
 
 export default defineConfig({
-  // 扫描文档的根目录 (默认为 'docs')
-  // 如果你想扫描当前根目录下的所有文件，可以设为 '.'
+  // 扫描根目录 (默认 'docs')
   baseDir: 'docs',
   
-  // 排除不想展示的文件或目录 (支持 glob 模式)
-  exclude: ['node_modules', 'public', 'assets', 'dist'],
+  // 目标文件-标记所在位置 (默认 'README.md')
+  outDir: 'README.md',
+
+  // 全局物理忽略 (支持 glob 模式)
+  ignore: ['**/node_modules/**', '**/*.test.md'],
   
-  // 目录注入的目标文件 (默认为 'README.md')
-  outDir: 'README.md'
+  // 最大扫描深度 (默认 3)
+  maxDepth: 3,
+});
+```
+
+### 映射规则 (Mapping)
+
+mapping 字段用于修改生成的目录结构，支持以下**三类规则**。
+
+注意：所有保留字段（如 $name, $order, $ignore）均使用 $ 前缀以避免与文件名冲突。
+
+- $name：修改在目录中显示的标题
+- $order：数字越小越靠前
+- $ignore：是否在目录中隐藏此节点 (**及子节点**)
+
+**A. 全局匹配 (Global Match)**
+
+使用 **/ 前缀，匹配仓库内所有文件名或目录名与 Key 同名的节点，忽略其层级深度
+
+```
+export default defineConfig({
+  mapping: {
+    // 对象模式配置多个属性
+    '**/faq.md': {
+      $name: '常见问题汇总',
+      $order: 11
+      ignore: true
+    }
+    // 字符串模式只表示对应标题
+    '**/faq.md': '常见问题汇总',
+  }
+})
+```
+**B. 目录树嵌套配置 (Nested Config)**
+
+匹配 baseDir 根目录下的特定文件夹，并支持递归配置其内部结构
+
+注意：（1）不要写 /:Key 必须是单层文件夹名 （2）不要写扫描根目录：如果你的 baseDir 是 docs，配置时直接写 docs 下的一级目录名即可（例如写 guide 而不是 docs/guide）
+```
+export default defineConfig({
+  baseDir: 'docs', // 假设扫描 docs 目录
+  
+  mapping: {
+    // docs/guide
+    'guide': {
+      $name: '新手指南', 
+      $order: 1,
+    
+      // docs/guide/installation.md
+      'installation.md': {
+        $name: '安装步骤',
+        $order: 1
+      },
+
+      // docs/guide/advanced
+      'advanced': {
+        $name: '进阶配置',
+        // docs/guide/advanced/secret.md
+        'secret.md': { $ignore: true } 
+      }
+    }
+  }
+});
+```
+**C. 精准路径匹配 (Exact Path)**
+
+精准定位并配置指定路径下的特定文件或目录
+
+注意：（1）路径是相对于 baseDir 的相对路径
+```
+export default defineConfig({
+  baseDir: 'docs',
+  
+  mapping: {
+    // 对应路径: docs/Ai/MCP.md
+    'Ai/MCP.md': {
+      $name: 'MCP介绍',
+      $ignore: false
+    }
+
+    //或字符串模式-直接表示标题名字
+    'Ai/MCP.md': 'MCP介绍'
+  }
 });
 
 ```
-
 ## 未来计划 (Roadmap)
 
 未来计划包括：
 
-* [ ] **自定义映射配置 (Mapping & Override)**
 * [ ] **自定义模板 (Custom Templates)**
 * [ ] **多文档库支持 (Multi-Repo / Monorepo Support)**
 * [ ] **GitHub Actions 集成 (CI/CD)**
