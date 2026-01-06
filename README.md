@@ -37,6 +37,7 @@
   * ✅ 阿拉伯数字：`1.`, `2.`, `10.`
   * ✅ 中文数字：`第一章`, `十二`, `第三节`
   * ✅ 罗马数字：`I`, `IV`, `X`
+* 多源元数据支持：支持通过文件名、Frontmatter或配置文件灵活控制标题与排序。
 * **无损注入**：只需要要使用 `<!--toc-->` 标记，自动更新相应的目录区域
   * 仅需维护单一标记 `<!--toc-->`
   * 无论是原位更新、位置迁移还是废弃标记清理，都能**构建出精确的“删除-插入”操作链**，实现对文档内容的零侵入修改
@@ -84,9 +85,32 @@ toc
 
 ## 配置 (Configuration)
 
-工具支持通过 toc.config.ts 进行定制化配置
+工具支持通过 toc.config.ts 和md文件内进行定制化配置
 
-### 基础配置
+### 文件内配置 (Frontmatter)
+
+可以直接在 Markdown 文件的头部使用 YAML Frontmatter 进行单文件控制
+
+支持以下字段：
+
+* **`title`** (string): 自定义在目录中显示的标题（优先级：Config > Frontmatter > H1 > 文件名）。
+* **`order`** (number): 手动指定排序权重。数字越小，在同级目录中越靠前。
+* **`ignore`** (boolean): 设置为 `true` 可强制隐藏该文件。
+
+**示例：**
+
+在 `docs/guide/intro.md` 文件头部：
+
+```markdown
+---
+title: 🚀 快速入门指南
+order: 1
+ignore: false
+---
+
+# 正文内容...
+
+### `toc.config.ts`基础配置
 
 ```typescript
 import { defineConfig } from '@kitcaf/tocgen';
@@ -106,7 +130,7 @@ export default defineConfig({
 });
 ```
 
-### 映射规则 (Mapping)
+### `toc.config.ts`映射规则 (Mapping)
 
 mapping 字段用于修改生成的目录结构，支持以下**三类规则**。
 

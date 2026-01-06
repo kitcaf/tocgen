@@ -1,3 +1,8 @@
+Here is the updated English version of `README_en.md`, synchronized with your latest Chinese content (including the new Frontmatter section).
+
+You can copy this directly into your **`README_en.md`** file.
+
+```markdown
 <div align="center">
 
 # @kitcaf/tocgen
@@ -24,24 +29,21 @@ When maintaining large Knowledge Bases or multi-chapter documentation on GitHub,
 
 If you have ever maintained repositories like "Learning Notes," "Technical Documentation," or "E-books" on GitHub, you must have encountered these issues:
 
-1. **Manual Maintenance Hell**: You added `docs/Chapter10/1.md` but forgot to add a link in the root `README`, making it impossible for readers to find.
-2. **Counter-intuitive Sorting**: GitHub sorts by ASCII code by default, causing `10.md` to appear before `2.md`; or causing a chaotic order between `Chapter 1` and `Chapter 2`.
-3. **Lack of Global View**: GitHub only allows viewing single files, lacking a global, hierarchical "Book Directory" view.
+1.  **Manual Maintenance Hell**: You added `docs/Chapter10/1.md` but forgot to add a link in the root `README`, making it impossible for readers to find.
+2.  **Counter-intuitive Sorting**: GitHub sorts by ASCII code by default, causing `10.md` to appear before `2.md`; or causing a chaotic order between `Chapter 1` and `Chapter 2`.
+3.  **Lack of Global View**: GitHub only allows viewing single files, lacking a global, hierarchical "Book Directory" view.
 
 ## Features
 
 * **GitHub Friendly**: Generated links are perfectly compatible with GitHub Markdown rendering rules—click to jump.
 * **Smart Mixed Sorting**: Automatically identifies and sorts numbers within filenames.
-* ✅ Arabic Numerals: `1.`, `2.`, `10.`
-* ✅ Chinese Numerals: `第一章`, `十二`, `第三节`
-* ✅ Roman Numerals: `I`, `IV`, `X`
-
-
+    * ✅ Arabic Numerals: `1.`, `2.`, `10.`
+    * ✅ Chinese Numerals: `第一章`, `十二`, `第三节`
+    * ✅ Roman Numerals: `I`, `IV`, `X`
+* **Multi-source Metadata Support**: Supports flexible control of titles and sorting via filenames, Frontmatter, or configuration files.
 * **Non-destructive Injection**: Simply use the `` marker to automatically update the corresponding directory region.
-* Only requires maintaining a single marker: ``.
-* Whether it's an in-place update, location migration, or cleanup of deprecated markers, it **builds a precise "delete-insert" operation chain**, achieving zero-intrusion modification of your document content.
-
-
+    * Only requires maintaining a single marker: ``.
+    * Whether it's an in-place update, location migration, or cleanup of deprecated markers, it **builds a precise "delete-insert" operation chain**, achieving zero-intrusion modification of your document content.
 * **Zero Configuration Start**: Default settings satisfy 90% of needs, while also supporting deep customization via `toc.config.ts`.
 
 ## Installation
@@ -84,9 +86,34 @@ toc
 
 ## Configuration
 
-The tool supports customization via `toc.config.ts`.
+The tool supports customization via `toc.config.ts` and in-file Markdown configuration.
 
-### Basic Configuration
+### In-file Configuration (Frontmatter)
+
+You can directly control individual files using YAML Frontmatter at the top of the Markdown file.
+
+The following fields are supported:
+
+* **`title`** (string): Custom title displayed in the TOC (Priority: Config > Frontmatter > H1 > Filename).
+* **`order`** (number): Manually specify sorting weight. Smaller numbers appear first.
+* **`ignore`** (boolean): Set to `true` to force hide this file.
+
+**Example:**
+
+At the top of `docs/guide/intro.md`:
+
+```markdown
+---
+title: 🚀 Quick Start Guide
+order: 1
+ignore: false
+---
+
+# Content starts here...
+
+```
+
+### `toc.config.ts` Basic Configuration
 
 ```typescript
 import { defineConfig } from '@kitcaf/tocgen';
@@ -107,7 +134,7 @@ export default defineConfig({
 
 ```
 
-### Mapping Rules
+### `toc.config.ts` Mapping Rules
 
 The `mapping` field is used to modify the generated directory structure, supporting the following **three types of rules**.
 
@@ -214,3 +241,7 @@ You are very welcome to ask questions or make suggestions. Whether it's a bug re
 ## License
 
 ISC © [Kitcaf](https://github.com/kitcaf)
+
+```
+
+```
