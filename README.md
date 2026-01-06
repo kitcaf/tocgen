@@ -1,6 +1,6 @@
 ## 项目介绍 (project introduction)
 
-> **专门为 GitHub 知识库和文档库打造的自动化目录生成工具。**
+> **专门为 GitHub 知识库和文档库打造的极速自动化目录生成工具。**
 > *Automated Table of Contents Generator for GitHub Documentation Libraries.*
 
 在 GitHub 上维护大型知识库（Knowledge Base）或多章节文档时，最令人头疼的就是手动维护 `README.md` 里的目录索引。每当你新增一个文件或调整章节顺序，都需要手动更新链接。
