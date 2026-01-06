@@ -1,3 +1,16 @@
+<div align="center">
+
+# @kitcaf/tocgen
+
+[![NPM Version](https://img.shields.io/npm/v/@kitcaf/tocgen)](https://www.npmjs.com/package/@kitcaf/tocgen)
+
+<p align="center">
+  <a href="./README_en.md">English</a> | <span>简体中文</span>
+</p>
+
+</div>
+
+
 ## 项目介绍 (project introduction)
 
 > **专门为 GitHub 知识库和文档库打造的自动化目录生成工具。**
