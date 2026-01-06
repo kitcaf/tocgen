@@ -7,6 +7,8 @@
 
 `@kitcaf/tocgen` 完美解决了这个问题。它能像人类一样理解你的文件名（支持中文、罗马数字混排），自动扫描整个仓库，生成结构清晰的目录树，并直接注入到你的主页文档中。
 
+**如果您觉得 `@kitcaf/tocgen` 对您有帮助，麻烦您动动小手给我点个 Star ⭐️，这对我是莫大的鼓励！**
+
 ## 痛点 (The Problem)
 
 如果你在 GitHub 上维护过类似《学习笔记》、《技术文档》或《电子书》这样的仓库，你一定遇到过：
@@ -182,6 +184,10 @@ export default defineConfig({
 * [ ] **多文档库支持 (Multi-Repo / Monorepo Support)**
 * [ ] **GitHub Actions 集成 (CI/CD)**
 * [ ] **自动监听 (Watch Mode)**
+
+## 贡献与支持
+
+同时非常欢迎您提出问题或建议。无论是 Bug 报告还是功能请求，**欢迎随时提交 Issue**。您的每一个反馈都是项目进步的动力。
 
 ## License
 
