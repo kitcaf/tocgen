@@ -103,7 +103,7 @@ toc
 
 ```markdown
 ---
-title: 🚀 快速入门指南
+title: 快速入门指南
 order: 1
 ignore: false
 ---

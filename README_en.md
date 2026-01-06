@@ -1,8 +1,3 @@
-Here is the updated English version of `README_en.md`, synchronized with your latest Chinese content (including the new Frontmatter section).
-
-You can copy this directly into your **`README_en.md`** file.
-
-```markdown
 <div align="center">
 
 # @kitcaf/tocgen
