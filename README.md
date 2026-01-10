@@ -46,11 +46,11 @@
 ## 安装 (Installation)
 
 ```bash
-# 全局安装 (推荐，方便在任何项目使用)
-npm install -g @kitcaf/tocgen
+# 安装
+npm install @kitcaf/tocgen
 
 # 或者使用 pnpm
-pnpm add -g @kitcaf/tocgen
+pnpm add @kitcaf/tocgen
 
 ```
 
